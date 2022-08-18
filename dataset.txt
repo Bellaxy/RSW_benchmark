@@ -1,0 +1,5 @@
+
+The contributions of academic paper "benchmark study for welding gun fault prediction
+"comprise publishing the available source code here, as well as the acquired data set
+on Zenodo3. In addition, we'll provide a reproducible CodeOcean
+capsule4 containing an example run for demonstration soon.

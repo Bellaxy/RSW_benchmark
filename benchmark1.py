@@ -23,7 +23,7 @@ if __name__ == '__main__':
     tar_list = []
     cov_list = []
     switch = 0  # =1 when something case stop the training set building in middle
-    for path, dir_list, file_list in os.walk(r"D:/data/RSW/RSW gun fault prediction benchmark data set/train"):
+    for path, dir_list, file_list in os.walk(r"./train"):
         for file_name in file_list:
             if file_name == '-.csv':  # Mark
                 switch = 0
@@ -153,7 +153,7 @@ if __name__ == '__main__':
     #  Testing
 
     switch = 0  # =1 when something case stop the training set building in middle
-    for path, dir_list, file_list in os.walk(r"D:/data/RSW/RSW gun fault prediction benchmark data set/test"):
+    for path, dir_list, file_list in os.walk(r"./test"):
         for file_name in file_list:
             if file_name == '-.csv':  # Mark
                 switch = 0
@@ -180,7 +180,7 @@ if __name__ == '__main__':
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/BayesianRidge' + file_name[-4:] + '.png'
+                plt.savefig('./BayesianRidge' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -189,14 +189,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, pred_Regression)],
                      'mape': [mape(series_tar, pred_Regression)],
                      'mse': [mse(series_tar, pred_Regression)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a')  # metric
+                ).to_csv('./metric of ' + file_name, mode='a')  # metric
 
                 predl_RandomForest = model_RandomForest.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/RandomForest' + file_name[-4:] + '.png'
+                plt.savefig('./RandomForest' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -205,14 +205,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_RandomForest)],
                      'mape': [mape(series_tar, predl_RandomForest)],
                      'mse': [mse(series_tar, predl_RandomForest)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_LinearRegressionModel = model_LinearRegressionModel.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/LinearRegression' + file_name[-4:] + '.png'
+                plt.savefig('./LinearRegression' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -221,14 +221,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_LinearRegressionModel)],
                      'mape': [mape(series_tar, predl_LinearRegressionModel)],
                      'mse': [mse(series_tar, predl_LinearRegressionModel)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_LightGBMModel = model_LightGBMModel.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/LightGB' + file_name[-4:] + '.png'
+                plt.savefig('./LightGB' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -237,14 +237,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_LightGBMModel)],
                      'mape': [mape(series_tar, predl_LightGBMModel)],
                      'mse': [mse(series_tar, predl_LightGBMModel)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_RNN = model_RNN.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/RNN' + file_name[-4:] + '.png'
+                plt.savefig('./RNN' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -253,14 +253,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_RNN)],
                      'mape': [mape(series_tar, predl_RNN)],
                      'mse': [mse(series_tar, predl_RNN)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_GRU = model_GRU.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/GRU' + file_name[-4:] + '.png'
+                plt.savefig('./GRU' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -269,14 +269,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_GRU)],
                      'mape': [mape(series_tar, predl_GRU)],
                      'mse': [mse(series_tar, predl_GRU)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_LSTM = model_LSTM.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/LSTM' + file_name[-4:] + '.png'
+                plt.savefig('./LSTM' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -285,14 +285,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_LSTM)],
                      'mape': [mape(series_tar, predl_LSTM)],
                      'mse': [mse(series_tar, predl_LSTM)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_TCNModel = model_TCNModel.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/TCN' + file_name[-4:] + '.png'
+                plt.savefig('./TCN' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -301,14 +301,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_TCNModel)],
                      'mape': [mape(series_tar, predl_TCNModel)],
                      'mse': [mse(series_tar, predl_TCNModel)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_TFTModel = model_TFTModel.predict(series=series_tar, n=120, past_covariates=series_cov)
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/TFT' + file_name[-4:] + '.png'
+                plt.savefig('./TFT' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -317,14 +317,14 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_TFTModel)],
                      'mape': [mape(series_tar, predl_TFTModel)],
                      'mse': [mse(series_tar, predl_TFTModel)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of ' + file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of ' + file_name, mode='a', header=None)  # metric
 
                 predl_NBEATS = model_NBEATS.predict(series=series_tar, n=120, past_covariates=series_cov)  # predict
                 plt.figure(figsize=(35, 10))  # plot
                 data_tar.plot(label="actual")
                 predl_NBEATS.plot(label="forecast")
                 plt.legend()
-                plt.savefig('E:/01读博/小论文/Benchmark paper/实验/实验1/NBEATS' + file_name[-4:] + '.png'
+                plt.savefig('./NBEATS' + file_name[-4:] + '.png'
                             # , format='pdf'
                             , bbox_inches='tight'
                             , pad_inches=0.1, dpi=500)
@@ -333,7 +333,7 @@ if __name__ == '__main__':
                      'mae': [mae(series_tar, predl_NBEATS)],
                      'mape': [mape(series_tar, predl_NBEATS)],
                      'mse': [mse(series_tar, predl_NBEATS)]}
-                ).to_csv('E:/01读博/小论文/Benchmark paper/实验/实验1/metric of '+file_name, mode='a', header=None)  # metric
+                ).to_csv('./metric of '+file_name, mode='a', header=None)  # metric
 
                 print('Finish testing file ' + file_name)
 
